@@ -4,17 +4,17 @@ import Button from 'react-bootstrap/Button';
 
 class CityForm extends React.Component {
 
-    getQuery = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
-    }
+   getCity = (e, city) => {
+    e.preventDefault();
+    console.log(city);
+   }
 
     render() {
         return (
-            <Form onChange={(e) => this.props.storeCity(e.target.value)}>
+            <Form >
                 <Form.Label>Enter A City</Form.Label>
-                <Form.Control type="text" placeholder="Enter City" />
-                <Button variant="primary" type="submit" onClick={this.getQuery}>
+                <Form.Control type="text" placeholder="Enter City" onChange={ (e) => this.props.getQuery(e.target.value)} />
+                <Button variant="primary" type="submit" onClick={(e)=> this.getCity(e, this.props.city)}>
                     Explore
                 </Button>
 

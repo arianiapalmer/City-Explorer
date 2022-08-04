@@ -7,17 +7,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: ''
+      city: '',
+      lat: 0,
+      long: 0
     }
   }
-
-  storeCity = (value) => {
-    this.setState({"city": value})
+  getQuery = (value) => {
+    this.setState({city: value})
+  }
+  getLatLong = (object) => {
+    this.setState({lat: object})
   }
   render() {
     return (
       <div className="App">
-        <CityForm storeCity={this.storeCity} city={this.state.city}/>
+        <CityForm getQuery={this.getQuery} city={this.state.city}/>
       </div>
     );
   }
