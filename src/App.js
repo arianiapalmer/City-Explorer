@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import CityForm from './CityForm';
+import CityMap from './CityMap';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -24,14 +25,15 @@ class App extends React.Component {
   searchApi = (value) => {
     this.setState({citySearch: value});
   }
-  // getLatLong = (object) => {
-  //   this.setState({lat: object})
-  // }
+ 
   render() {
     console.log(this.state.citySearch);
     return (
       <div className="App">
         <CityForm searchApi={this.searchApi} handleSubmit={this.getLocation}/>
+        {this.state.cityLocation.place_id &&
+          <CityMap title={this.state.cityLocation.display_name}/>
+        }
       </div>
     );
   }
