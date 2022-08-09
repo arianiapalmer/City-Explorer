@@ -2,22 +2,17 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-class CityForm extends React.Component {
 
-   getCity = (e, city) => {
-    e.preventDefault();
-    console.log(city);
-   }
+class CityForm extends React.Component {
 
     render() {
         return (
             <Form >
-                <Form.Label>Enter A City</Form.Label>
-                <Form.Control type="text" placeholder="Enter City" onChange={ (e) => this.props.getQuery(e.target.value)} />
-                <Button variant="primary" type="submit" onClick={(e)=> this.getCity(e, this.props.city)}>
+                <Form.Label>Search For A City</Form.Label>
+                <Form.Control type="text" placeholder="City Search" onChange={(event) => this.props.searchApi(event.target.value)} />
+                <Button variant="primary" type="submit" onClick={this.props.handleSubmit}>
                     Explore
                 </Button>
-
             </Form>
         );
     }
