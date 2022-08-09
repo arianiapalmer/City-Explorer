@@ -10,7 +10,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       citySearch: '',
-      cityLocation: {}
+      cityLocation: {},
+      map: {}
     }
   }
 
@@ -21,19 +22,20 @@ class App extends React.Component {
     console.log(response.data);
     this.setState({cityLocation: response.data[0]});
 
+
   }
   searchApi = (value) => {
     this.setState({citySearch: value});
   }
- 
   render() {
     console.log(this.state.citySearch);
     return (
       <div className="App">
         <CityForm searchApi={this.searchApi} handleSubmit={this.getLocation}/>
         {this.state.cityLocation.place_id &&
-          <CityMap title={this.state.cityLocation.display_name}/>
+          <CityMap title={this.state.cityLocation.display_name} src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${this.state.cityLocation.lat},${this.state.cityLocation.lon}&format=jpg&zoom=13`}/>
         }
+        
       </div>
     );
   }

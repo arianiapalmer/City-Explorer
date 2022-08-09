@@ -6,7 +6,7 @@ class CityMap extends React.Component {
     render() {
         return (
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img src={this.props.src}/>
                 <Card.Body>
                     <Card.Title>{this.props.title}</Card.Title>
                     <Card.Text>
